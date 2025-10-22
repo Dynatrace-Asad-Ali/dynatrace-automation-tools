@@ -117,8 +117,10 @@ class SRGEvaluate {
 
   private getExpression(event: SRGEvaluationEvent) {
     const initialDql =
-      'fetch bizevents | filter event.type == "guardian.validation.finished" AND contains(execution_context,"' +
+      'fetch bizevents | filter event.kind == "SDLC_EVENT" and contains(dt.srg.objective, "Errors")and contains(dt.srg.execution_context,"' +
       event["event.id"] +
+      // 'fetch bizevents | filter event.type == "guardian.validation.finished" AND contains(execution_context,"' +
+      // event["event.id"] +
       '") ';
 
     const finalDql = initialDql + " | sort timestamp desc | limit 1 ";
