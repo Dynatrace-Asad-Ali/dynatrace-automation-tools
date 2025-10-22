@@ -115,6 +115,7 @@ class SRGEvaluate {
     return query;
   }
 
+  //Changed dql to retrieve SRG status
   private getExpression(event: SRGEvaluationEvent) {
     const initialDql =
       'fetch bizevents | filter event.kind == "SDLC_EVENT" and contains(dt.srg.objective, "Errors")and contains(dt.srg.execution_context,"' +
