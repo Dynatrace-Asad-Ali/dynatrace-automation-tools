@@ -49,6 +49,17 @@ runs:
         labels: |
           org.opencontainers.image.title=${{ inputs.repo-url }}
 
+    - name: Echo
+      shell: bash
+      run: |
+        echo "Docker Folder: ${{ inputs.docker-folder }}"
+        echo "User: ${{ inputs.user }}"
+        echo "Repo URL: ${{ inputs.repo-url }}"
+        echo "Description: ${{ inputs.description }}"
+        echo "Readme Path: ${{ inputs.readmepath }}"
+        echo "Tags: ${{ steps.meta.outputs.tags }}"
+        echo "Labels: ${{ steps.meta.outputs.labels }}"
+
     - name: Debug
       shell: bash
       working-directory: ${{ inputs.docker-folder }}
